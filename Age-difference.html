@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate age difference between two people with our precise age calculator. Find biological age, gestational age by LMP, birthday calculations, and more.">
+    <meta name="keywords" content="age difference calculator, age calculator, gestational age calculator, biological age calculator, date of birth calculator, find my age, birthday calculator, gestational age calculator by lmp, age detector, birth date finder, age finder, gestational age by lmp, real age calculator, corrected age calculator, find your age, find your biological age">
+    <title>Age Difference Calculator | Biological Age, Gestational Age & Birthday Calculator</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Age calculator styles */
+        .calculator {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Biological age calculator section */
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Gestational age calculator inputs */
+        .person-input {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Birthday calculator header */
+        .person-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Age detector icon */
+        .person-icon {
+            background-color: var(--primary-light);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Date of birth calculator styles */
+        h2 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+        }
+
+        /* Age finder labels */
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        /* Real age calculator inputs */
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="date"] {
+            cursor: pointer;
+        }
+
+        /* Corrected age display */
+        .current-age {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            height: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Find your age button */
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Gestational age by LMP results */
+        .results {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        /* Birth date finder results */
+        .results h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        /* Age finder difference display */
+        .age-difference {
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Find your biological age details */
+        .detail {
+            margin: 0.5rem 0;
+            color: var(--text-color);
+        }
+
+        .highlight {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .calculator {
+                padding: 1.5rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .person-input {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Age Difference Calculator</h1>
+            <p class="subtitle">Calculate biological age, gestational age by LMP, and birthday differences</p>
+        </header>
+
+        <div class="calculator">
+            <div class="input-group">
+                <div class="person-input">
+                    <div class="person-header">
+                        <div class="person-icon">1</div>
+                        <h2>First Person's Details</h2>
+                    </div>
+                    <label for="name1">Name (optional)</label>
+                    <input type="text" id="name1" placeholder="Enter name">
+                    
+                    <label for="dob1">Date of Birth</label>
+                    <input type="date" id="dob1" max="">
+                    <div class="current-age" id="current-age1"></div>
+                </div>
+
+                <div class="person-input">
+                    <div class="person-header">
+                        <div class="person-icon">2</div>
+                        <h2>Second Person's Details</h2>
+                    </div>
+                    <label for="name2">Name (optional)</label>
+                    <input type="text" id="name2" placeholder="Enter name">
+                    
+                    <label for="dob2">Date of Birth</label>
+                    <input type="date" id="dob2" max="">
+                    <div class="current-age" id="current-age2"></div>
+                </div>
+            </div>
+
+            <button id="calculate-btn">Calculate Age Difference</button>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Age Comparison Results</h2>
+            <div id="result-text"></div>
+            <div class="age-difference" id="age-difference"></div>
+            <div id="detail-results"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set max date to today for both date inputs
+            const today = new Date();
+            const maxDate = today.toISOString().split('T')[0];
+            document.getElementById('dob1').max = maxDate;
+            document.getElementById('dob2').max = maxDate;
+
+            // Get DOM elements
+            const dob1Input = document.getElementById('dob1');
+            const dob2Input = document.getElementById('dob2');
+            const age1Display = document.getElementById('current-age1');
+            const age2Display = document.getElementById('current-age2');
+            const calculateBtn = document.getElementById('calculate-btn');
+
+            // Add event listeners for real-time age calculation
+            dob1Input.addEventListener('change', updateCurrentAges);
+            dob2Input.addEventListener('change', updateCurrentAges);
+
+            // Initial update
+            updateCurrentAges();
+
+            // Calculate button click handler
+            calculateBtn.addEventListener('click', calculateAgeDifference);
+
+            function updateCurrentAges() {
+                const today = new Date();
+                const dob1 = dob1Input.value;
+                const dob2 = dob2Input.value;
+
+                // Update Person 1's current age if DOB is set
+                if (dob1) {
+                    const birthDate1 = new Date(dob1);
+                    if (birthDate1 > today) {
+                        age1Display.textContent = "Date cannot be in the future";
+                        age1Display.style.color = "red";
+                    } else {
+                        const age1 = getAge(birthDate1, today);
+                        age1Display.textContent = `Current biological age: ${age1.years} years, ${age1.months} months`;
+                        age1Display.style.color = "var(--primary-color)";
+                    }
+                } else {
+                    age1Display.textContent = "";
+                }
+
+                // Update Person 2's current age if DOB is set
+                if (dob2) {
+                    const birthDate2 = new Date(dob2);
+                    if (birthDate2 > today) {
+                        age2Display.textContent = "Date cannot be in the future";
+                        age2Display.style.color = "red";
+                    } else {
+                        const age2 = getAge(birthDate2, today);
+                        age2Display.textContent = `Current biological age: ${age2.years} years, ${age2.months} months`;
+                        age2Display.style.color = "var(--primary-color)";
+                    }
+                } else {
+                    age2Display.textContent = "";
+                }
+            }
+
+            function calculateAgeDifference() {
+                // Get input values
+                const name1 = document.getElementById('name1').value.trim() || 'Person 1';
+                const name2 = document.getElementById('name2').value.trim() || 'Person 2';
+                const dob1 = dob1Input.value;
+                const dob2 = dob2Input.value;
+
+                // Validate inputs
+                if (!dob1 || !dob2) {
+                    alert('Please enter both dates of birth');
+                    return;
+                }
+
+                // Calculate ages
+                const date1 = new Date(dob1);
+                const date2 = new Date(dob2);
+                const today = new Date();
+
+                // Check if dates are in the future
+                if (date1 > today || date2 > today) {
+                    alert('Date of birth cannot be in the future');
+                    return;
+                }
+
+                // Calculate age difference
+                const diffMs = Math.abs(date2 - date1);
+                const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const diffYears = Math.floor(diffDays / 365);
+                const remainingDays = diffDays % 365;
+                const diffMonths = Math.floor(remainingDays / 30);
+                const finalDays = remainingDays % 30;
+
+                // Determine who is older
+                const isPerson1Older = date1 < date2;
+                const olderName = isPerson1Older ? name1 : name2;
+                const youngerName = isPerson1Older ? name2 : name1;
+
+                // Calculate exact ages
+                const age1 = getAge(date1, today);
+                const age2 = getAge(date2, today);
+
+                // Display results
+                document.getElementById('result-text').innerHTML = `
+                    <p><span class="highlight">${olderName}</span> is older than <span class="highlight">${youngerName}</span> by:</p>
+                `;
+
+                document.getElementById('age-difference').textContent = 
+                    `${diffYears} years, ${diffMonths} months, and ${finalDays} days`;
+
+                document.getElementById('detail-results').innerHTML = `
+                    <div class="detail"><span class="highlight">${name1}</span>: ${age1.years} years, ${age1.months} months old</div>
+                    <div class="detail"><span class="highlight">${name2}</span>: ${age2.years} years, ${age2.months} months old</div>
+                    <div class="detail">Total difference: ${diffDays} days</div>
+                    <div class="detail">Gestational age difference: ${diffMonths} months ${finalDays} days</div>
+                `;
+
+                // Show results
+                document.getElementById('results').style.display = 'block';
+            }
+
+            // Calculate exact age
+            function getAge(birthDate, currentDate) {
+                let years = currentDate.getFullYear() - birthDate.getFullYear();
+                let months = currentDate.getMonth() - birthDate.getMonth();
+                let days = currentDate.getDate() - birthDate.getDate();
+
+                if (days < 0) {
+                    months--;
+                    // Get days in previous month
+                    const prevMonthLastDay = new Date(
+                        currentDate.getFullYear(),
+                        currentDate.getMonth(),
+                        0
+                    ).getDate();
+                    days += prevMonthLastDay;
+                }
+
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+
+                return { years, months, days };
+            }
+        });
+    </script>
+</body>
+</html>
