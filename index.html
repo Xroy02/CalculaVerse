@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online calculators for loans, mortgages, BMI, retirement planning, and more. Calculate EMI, car payments, home loans, personal loans, and financial planning tools.">
-    <meta name="keywords" content="calculator, mortgage calculator, loan calculator, car loan calculator, home loan calculator, personal loan calculator, BMI calculator, retirement calculator, refinance calculator, investment calculator, student loan calculator, compound interest calculator, tax calculator, payment calculator, finance calculator">
-    <title>CalculaVerse | Free Online Calculators for Loans, Mortgage, BMI & Finance</title>
+    <meta name="description" content="Free calculators for loans, mortgages, BMI & finance. Calculate EMI, car payments, home loans, and personal loan repayments.">
+    <meta name="keywords" content="calculator, mortgage calculator, loan calculator, car loan calculator, home loan calculator, personal loan calculator, BMI calculator, retirement calculator, refinance calculator">
+    <title>CalculaVerse | Loan, Mortgage & Financial Calculators</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -75,11 +75,18 @@
             margin: 0 auto;
         }
 
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--primary);
+        }
+
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 1rem;
         }
 
         .tool-card {
@@ -150,6 +157,32 @@
             color: var(--color);
         }
 
+        .more-tools {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .internal-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .internal-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .internal-links a:hover {
+            background: var(--primary-light);
+        }
+
         footer {
             text-align: center;
             margin-top: 5rem;
@@ -166,6 +199,10 @@
             .tools-grid {
                 grid-template-columns: 1fr;
             }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -176,53 +213,67 @@
                 <h1 class="logo">CalculaVerse</h1>
                 <span class="material-icons calculator-icon">calculate</span>
             </div>
-            <p class="tagline">Free online financial calculators for loans, mortgages, BMI, retirement planning, and personal finance management</p>
+            <p class="tagline">Free financial calculators for loans, mortgages, and personal finance</p>
         </header>
+
+        <h2>Our Featured Calculators</h2>
 
         <div class="tools-grid">
             <!-- Age Calculator Card -->
-            <div class="tool-card" style="--color: var(--age-calc)" onclick="location.href='Age-calculator.html'">
+            <div class="tool-card" style="--color: var(--age-calc)">
                 <div class="tool-icon">👶</div>
                 <h3 class="tool-title">Age Calculator</h3>
-                <p class="tool-desc">Calculate exact age in years, months and days. Essential for financial planning and retirement calculations.</p>
+                <p class="tool-desc">Calculate exact age in years, months and days for financial planning</p>
                 <a href="Age-calculator.html" class="btn">Calculate Age</a>
             </div>
 
             <!-- Age Difference Calculator Card -->
-            <div class="tool-card" style="--color: var(--age-diff)" onclick="location.href='Age-difference.html'">
+            <div class="tool-card" style="--color: var(--age-diff)">
                 <div class="tool-icon">👥</div>
                 <h3 class="tool-title">Age Difference</h3>
-                <p class="tool-desc">Compare ages between people. Useful for family planning and joint loan applications.</p>
+                <p class="tool-desc">Compare ages between people for joint financial planning</p>
                 <a href="Age-difference.html" class="btn">Compare Ages</a>
             </div>
 
             <!-- BMI Calculator Card -->
-            <div class="tool-card" style="--color: var(--bmi-calc)" onclick="location.href='BMI-calculator.html'">
+            <div class="tool-card" style="--color: var(--bmi-calc)">
                 <div class="tool-icon">⚖️</div>
                 <h3 class="tool-title">BMI Calculator</h3>
-                <p class="tool-desc">Calculate your Body Mass Index and understand health metrics for insurance and wellness planning.</p>
+                <p class="tool-desc">Calculate your Body Mass Index for health and insurance</p>
                 <a href="BMI-calculator.html" class="btn">Calculate BMI</a>
             </div>
 
             <!-- EMI Calculator Card -->
-            <div class="tool-card" style="--color: var(--emi-calc)" onclick="location.href='EMI-calculator.html'">
+            <div class="tool-card" style="--color: var(--emi-calc)">
                 <div class="tool-icon">💰</div>
                 <h3 class="tool-title">Loan EMI Calculator</h3>
-                <p class="tool-desc">Calculate monthly payments for home loans, car loans, personal loans, and mortgage refinancing.</p>
+                <p class="tool-desc">Calculate monthly payments for home and car loans</p>
                 <a href="EMI-calculator.html" class="btn">Calculate EMI</a>
             </div>
 
             <!-- Temperature Converter Card -->
-            <div class="tool-card" style="--color: var(--temp-calc)" onclick="location.href='Temperature-calculator.html'">
+            <div class="tool-card" style="--color: var(--temp-calc)">
                 <div class="tool-icon">🌡️</div>
                 <h3 class="tool-title">Temperature Converter</h3>
-                <p class="tool-desc">Convert between Celsius and Fahrenheit for cooking, travel, and scientific calculations.</p>
+                <p class="tool-desc">Convert between Celsius and Fahrenheit units</p>
                 <a href="Temperature-calculator.html" class="btn">Convert Temp</a>
             </div>
         </div>
 
+        <div class="more-tools">
+            <h2>More Financial Tools</h2>
+            <div class="internal-links">
+                <a href="EMI-calculator.html">Mortgage Calculator</a>
+                <a href="EMI-calculator.html">Car Loan Calculator</a>
+                <a href="EMI-calculator.html">Personal Loan Calculator</a>
+                <a href="BMI-calculator.html">Health Calculators</a>
+                <a href="Age-calculator.html">Retirement Planning</a>
+            </div>
+        </div>
+
         <footer>
-            <p>© 2023 CalculaVerse. All rights reserved. | Free financial calculators for mortgage planning, loan repayment, investment growth, and health metrics.</p>
+            <p>© 2023 CalculaVerse. All rights reserved.</p>
+            <p>Free online calculators for loan payments, mortgage planning, and financial management.</p>
         </footer>
     </div>
 </body>
